@@ -1,0 +1,18 @@
+{
+  "name": "winna-plinko-audit",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "verify": "node src/verifier.js",
+    "simulate": "node src/simulation.js",
+    "test": "node src/test-samples.js",
+    "sample": "node src/api-sampler.js",
+    "analyze": "node src/analyze-samples.js",
+    "manual": "node src/manual-sampler.js",
+    "nonce": "node src/exploit-tests/nonce-tests.js",
+    "crypto": "node src/exploit-tests/crypto-audit.js",
+    "timing": "node src/exploit-tests/timing-analysis.js",
+    "race": "node src/exploit-tests/race-condition.js"
+  },
+  "dependencies": {}
+}

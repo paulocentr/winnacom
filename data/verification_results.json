@@ -1,0 +1,46 @@
+{
+  "selfTest": {
+    "seed": "a]Y`yJj5B=Kc5FD",
+    "slot": 7,
+    "deterministic": true
+  },
+  "results": [
+    {
+      "id": 1,
+      "seed": "a]Y`yJj5B=Kc5FD",
+      "client": "test",
+      "nonce": 0,
+      "risk": "low",
+      "got": 7,
+      "expected": 7,
+      "ok": true,
+      "commitmentValid": true
+    },
+    {
+      "id": 2,
+      "seed": "mysecretserverseed",
+      "client": "player123",
+      "nonce": 0,
+      "risk": "low",
+      "got": 9,
+      "expected": 9,
+      "ok": true,
+      "commitmentValid": true
+    },
+    {
+      "id": 3,
+      "seed": "mysecretserverseed",
+      "client": "player123",
+      "nonce": 1,
+      "risk": "medium",
+      "got": 6,
+      "expected": 6,
+      "ok": true,
+      "commitmentValid": true
+    }
+  ],
+  "pass": 3,
+  "fail": 0,
+  "skipped": 0,
+  "ts": "2026-02-05T20:19:47.508Z"
+}

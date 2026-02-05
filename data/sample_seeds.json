@@ -1,0 +1,47 @@
+{
+  "_note": "test seeds verified against winna's fairness verify tab",
+  "rounds": [
+    {
+      "id": 1,
+      "server_seed": "a]Y`yJj5B=Kc5FD",
+      "server_seed_hash": "ef59d48c6720e92031d8ea1c5b6f22b2487c1418ab8b762d8a01a41a495b3a73",
+      "client_seed": "test",
+      "nonce": 0,
+      "rows": 16,
+      "risk": "low",
+      "expected_slot": 7,
+      "expected_multiplier": 1,
+      "path": "LRLRLLLRLRLLRRRL",
+      "hash": "5077c788a50bcdba08a598c08450901b36444c842070e0042bffb3ea81a363a4",
+      "winna_match": true
+    },
+    {
+      "id": 2,
+      "server_seed": "mysecretserverseed",
+      "server_seed_hash": "3d162d06ed53f11d162e3763c33b40a713132742247e7cc416475ee06e66e252",
+      "client_seed": "player123",
+      "nonce": 0,
+      "rows": 16,
+      "risk": "low",
+      "expected_slot": 9,
+      "expected_multiplier": 1,
+      "path": "RLRRLRRLRLRLRLLR",
+      "hash": "8c3eeb816c526406866c382ea78cd5803d94d46cb56ba09a931d907e66a14d4a",
+      "winna_match": true
+    },
+    {
+      "id": 3,
+      "server_seed": "mysecretserverseed",
+      "server_seed_hash": "3d162d06ed53f11d162e3763c33b40a713132742247e7cc416475ee06e66e252",
+      "client_seed": "player123",
+      "nonce": 1,
+      "rows": 16,
+      "risk": "medium",
+      "expected_slot": 6,
+      "expected_multiplier": 1,
+      "path": "LRRRRRLLLLLLLRLL",
+      "hash": "51f2b8b1d92ec65497a12cdba27acfecc84418a4c3dc89f44d92473a2ff18a95",
+      "winna_match": true
+    }
+  ]
+}

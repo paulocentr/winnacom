@@ -1,0 +1,37 @@
+# Environment variables (contains secrets)
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Large simulation outputs (keep CSVs in data/)
+*.csv.bak
+
+# Credentials
+credentials.json
+secrets.json
+*_secret*
+*_credentials*
+
+# had hardcoded tokens, dont commit
+quick-sample.js

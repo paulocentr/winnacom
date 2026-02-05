@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 320px; padding: 15px; font-family: monospace; font-size: 13px; }
+    h3 { margin: 0 0 10px 0; }
+    .stats { background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 4px; }
+    .row { display: flex; justify-content: space-between; margin: 3px 0; }
+    button { padding: 8px 16px; margin: 5px 5px 5px 0; cursor: pointer; }
+    .export { background: #4CAF50; color: white; border: none; border-radius: 4px; }
+    .clear { background: #f44336; color: white; border: none; border-radius: 4px; }
+    #dist { font-size: 11px; max-height: 200px; overflow-y: auto; }
+    .bar { background: #2196F3; height: 12px; display: inline-block; }
+  </style>
+</head>
+<body>
+  <h3>🎰 Plinko Tracker</h3>
+
+  <div class="stats">
+    <div class="row"><span>Samples:</span><span id="count">0</span></div>
+    <div class="row"><span>Avg Mult:</span><span id="avgMult">-</span></div>
+    <div class="row"><span>RTP:</span><span id="rtp">-</span></div>
+    <div class="row"><span>Chi-sq:</span><span id="chiSq">-</span></div>
+    <div class="row"><span>Status:</span><span id="status">-</span></div>
+  </div>
+
+  <div id="dist"></div>
+
+  <div>
+    <button class="export" id="exportBtn">Export JSON</button>
+    <button class="clear" id="clearBtn">Clear</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
