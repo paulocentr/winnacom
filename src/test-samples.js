@@ -12,28 +12,27 @@ try {
 console.log('--- self test ---\n');
 
 const testSeed = 'a]Y`yJj5B=Kc5FD';
-const result = verify(testSeed, 'test', 0, 16);
+const result = verify(testSeed, 'test', 0, 16, 'low');
 console.log('seed:', testSeed);
-console.log('hash:', result.hash);
-console.log('path:', result.path.join(''));
-console.log('slot:', result.slot, '(' + getMultiplier(result.slot, 16, 'low') + 'x on low)');
+console.log('float:', result.float.toFixed(10));
+console.log('bucket:', result.bucket, '(' + result.multiplier + 'x on low)');
 
 // determinism - same input should always give same output
-const slots = [];
-for (let i = 0; i < 5; i++) slots.push(verify(testSeed, 'test', 0, 16).slot);
-console.log('\ndeterminism:', slots.every(s => s === slots[0]) ? 'ok' : 'FAIL');
+const buckets = [];
+for (let i = 0; i < 5; i++) buckets.push(verify(testSeed, 'test', 0, 16, 'low').bucket);
+console.log('\ndeterminism:', buckets.every(b => b === buckets[0]) ? 'ok' : 'FAIL');
 
 // variance check
 const s2 = [];
-for (let n = 0; n < 100; n++) s2.push(verify(testSeed, 'test', n, 16).slot);
-console.log('unique slots (100 nonces):', new Set(s2).size);
+for (let n = 0; n < 100; n++) s2.push(verify(testSeed, 'test', n, 16, 'low').bucket);
+console.log('unique buckets (100 nonces):', new Set(s2).size);
 
-// verificar as seeds reais
+// verify real seeds
 const output = {
     selfTest: {
         seed: testSeed,
-        slot: result.slot,
-        deterministic: slots.every(s => s === slots[0]),
+        bucket: result.bucket,
+        deterministic: buckets.every(b => b === buckets[0]),
     },
     results: [],
     pass: 0, fail: 0, skipped: 0,
@@ -49,8 +48,8 @@ if (samples.rounds?.length > 0) {
             output.skipped++;
             continue;
         }
-        const r = verify(s.server_seed, s.client_seed, s.nonce, s.rows || 16);
-        const mult = getMultiplier(r.slot, s.rows || 16, s.risk || 'medium');
+        const r = verify(s.server_seed, s.client_seed, s.nonce, s.rows || 16, s.risk || 'medium');
+        const mult = r.multiplier;
 
         // check commitment hash
         if (s.server_seed_hash) {
@@ -58,8 +57,8 @@ if (samples.rounds?.length > 0) {
             console.log(`#${s.id} commitment:`, commitOk ? 'ok' : 'BAD');
         }
 
-        const ok = r.slot === s.expected_slot;
-        console.log(`#${s.id}: slot ${r.slot} (${mult}x ${s.risk}) - expected ${s.expected_slot} (${s.expected_multiplier}x) - ${ok ? 'PASS' : 'FAIL'}`);
+        const ok = r.bucket === s.expected_bucket;
+        console.log(`#${s.id}: bucket ${r.bucket} (${mult}x ${s.risk}) - expected ${s.expected_bucket} (${s.expected_multiplier}x) - ${ok ? 'PASS' : 'FAIL'}`);
         ok ? output.pass++ : output.fail++;
 
         output.results.push({
@@ -68,8 +67,8 @@ if (samples.rounds?.length > 0) {
             client: s.client_seed,
             nonce: s.nonce,
             risk: s.risk,
-            got: r.slot,
-            expected: s.expected_slot,
+            got: r.bucket,
+            expected: s.expected_bucket,
             ok,
             commitmentValid: s.server_seed_hash ? verifyCommitment(s.server_seed, s.server_seed_hash) : null
         });

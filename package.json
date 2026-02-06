@@ -12,7 +12,8 @@
     "nonce": "node src/exploit-tests/nonce-tests.js",
     "crypto": "node src/exploit-tests/crypto-audit.js",
     "timing": "node src/exploit-tests/timing-analysis.js",
-    "race": "node src/exploit-tests/race-condition.js"
+    "race": "node src/exploit-tests/race-condition.js",
+    "verify-bets": "node src/verify-bets.js"
   },
   "dependencies": {}
 }

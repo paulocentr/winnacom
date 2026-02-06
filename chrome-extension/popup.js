@@ -89,9 +89,35 @@ async function getResults() {
     });
 }
 
+function updateSeedInfo(results) {
+    const seedDiv = document.getElementById('seedInfo');
+    // check if any result has seed data
+    const withSeeds = results.filter(r => r.clientSeed || r.serverSeedHash);
+    if (withSeeds.length === 0) {
+        seedDiv.style.display = 'none';
+        return;
+    }
+
+    seedDiv.style.display = 'block';
+    const cs = withSeeds[0].clientSeed || '-';
+    const sh = withSeeds[0].serverSeedHash || '-';
+    document.getElementById('clientSeed').textContent = cs.length > 20 ? cs.slice(0, 10) + '...' + cs.slice(-8) : cs;
+    document.getElementById('clientSeed').title = cs;
+    document.getElementById('serverHash').textContent = sh.length > 20 ? sh.slice(0, 10) + '...' + sh.slice(-8) : sh;
+    document.getElementById('serverHash').title = sh;
+
+    const nonces = withSeeds.filter(r => r.nonce !== null && r.nonce !== undefined).map(r => r.nonce);
+    if (nonces.length > 0) {
+        const min = Math.min(...nonces);
+        const max = Math.max(...nonces);
+        document.getElementById('nonceRange').textContent = `${min} - ${max} (${nonces.length})`;
+    }
+}
+
 async function refresh() {
     const results = await getResults();
     updateUI(analyze(results));
+    updateSeedInfo(results);
 }
 
 document.getElementById('exportBtn').addEventListener('click', async () => {
@@ -106,7 +132,8 @@ document.getElementById('exportBtn').addEventListener('click', async () => {
 
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `plinko_${Date.now()}.json`;
+    const difficulty = results[0]?.difficulty || 'mixed';
+    a.download = `plinko_${difficulty}_${results.length}_${Date.now()}.json`;
     a.click();
 });
 

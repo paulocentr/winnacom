@@ -1,0 +1,831 @@
+{
+  "results": [
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663464143,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770337978885
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663465305,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770337993001
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663465348,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770337993436
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663465382,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337993835
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663465420,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337994219
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663465451,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770337994608
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663465486,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337995004
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663465520,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337995452
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663465554,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770337995821
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663465586,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337996307
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663465626,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770337996744
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663465695,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337997554
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663465731,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770337997999
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663465766,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337998404
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663465802,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337998789
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663465837,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770337999272
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663465873,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770337999676
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663465907,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338000064
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663465943,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338000561
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663465988,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338000996
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466023,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338001475
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466065,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338001877
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466100,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338002264
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466132,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338002640
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663466168,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338003151
+    },
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663466218,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338003627
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466255,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338004039
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663466291,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338004426
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466321,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338004815
+    },
+    {
+      "bucket": 12,
+      "difficulty": "low",
+      "id": 663466349,
+      "mult": 1.4,
+      "pins": 16,
+      "ts": 1770338005206
+    },
+    {
+      "bucket": 12,
+      "difficulty": "low",
+      "id": 663466382,
+      "mult": 1.4,
+      "pins": 16,
+      "ts": 1770338005575
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663466417,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338005951
+    },
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663466442,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338006375
+    },
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663466474,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338006842
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466513,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338007226
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663466549,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338007607
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466578,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338007974
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466603,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338008463
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466647,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338008841
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663466679,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338009246
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466703,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338009633
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663466743,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338010079
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466786,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338010478
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663466808,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338010843
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466839,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338011259
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663466879,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338011645
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663466911,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338012042
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663466936,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338012436
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663466966,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338012917
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663467013,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338013292
+    },
+    {
+      "bucket": 12,
+      "difficulty": "low",
+      "id": 663467043,
+      "mult": 1.4,
+      "pins": 16,
+      "ts": 1770338013678
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663467071,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338014063
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663467108,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338014445
+    },
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663467140,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338014893
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663467171,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338015362
+    },
+    {
+      "bucket": 4,
+      "difficulty": "low",
+      "id": 663467214,
+      "mult": 1.4,
+      "pins": 16,
+      "ts": 1770338015839
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663467248,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338016234
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663467273,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338016720
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663467317,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338017098
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663467343,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338017464
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663467375,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338017865
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663467410,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338018261
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663467441,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338018650
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663467469,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338019050
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663467503,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338019428
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663467528,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338019797
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663467562,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338020334
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663467608,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338020722
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663467640,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338021131
+    },
+    {
+      "bucket": 4,
+      "difficulty": "low",
+      "id": 663467669,
+      "mult": 1.4,
+      "pins": 16,
+      "ts": 1770338021529
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663467704,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338022013
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663467729,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338022381
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663467764,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338022819
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663467800,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338023236
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663467833,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338023665
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663467875,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338024056
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663467907,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338024452
+    },
+    {
+      "bucket": 11,
+      "difficulty": "low",
+      "id": 663467939,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338024855
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663467970,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338025240
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468005,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338025631
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663468036,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338026021
+    },
+    {
+      "bucket": 10,
+      "difficulty": "low",
+      "id": 663468062,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338026416
+    },
+    {
+      "bucket": 11,
+      "difficulty": "low",
+      "id": 663468101,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338026798
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663468133,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338027233
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663468163,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338027687
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663468205,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338028156
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663468237,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338028537
+    },
+    {
+      "bucket": 12,
+      "difficulty": "low",
+      "id": 663468268,
+      "mult": 1.4,
+      "pins": 16,
+      "ts": 1770338028950
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468303,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338029342
+    },
+    {
+      "bucket": 11,
+      "difficulty": "low",
+      "id": 663468332,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338029799
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468369,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338030218
+    },
+    {
+      "bucket": 6,
+      "difficulty": "low",
+      "id": 663468408,
+      "mult": 1.1,
+      "pins": 16,
+      "ts": 1770338030602
+    },
+    {
+      "bucket": 8,
+      "difficulty": "low",
+      "id": 663468435,
+      "mult": 0.5,
+      "pins": 16,
+      "ts": 1770338030984
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468461,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338031355
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468487,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338031749
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468523,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338032166
+    },
+    {
+      "bucket": 7,
+      "difficulty": "low",
+      "id": 663468555,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338032568
+    },
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663468589,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338032946
+    },
+    {
+      "bucket": 9,
+      "difficulty": "low",
+      "id": 663468618,
+      "mult": 1,
+      "pins": 16,
+      "ts": 1770338033312
+    },
+    {
+      "bucket": 5,
+      "difficulty": "low",
+      "id": 663468649,
+      "mult": 1.2,
+      "pins": 16,
+      "ts": 1770338033772
+    }
+  ],
+  "summary": {
+    "count": 100,
+    "avgMult": 0.943,
+    "rtp": 94.3,
+    "chiSq": 9.895011655011654,
+    "fair": true,
+    "buckets": [
+      0,
+      0,
+      0,
+      0,
+      2,
+      7,
+      12,
+      23,
+      24,
+      18,
+      7,
+      3,
+      4,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "exported": "2026-02-06T00:34:14.009Z"
+}

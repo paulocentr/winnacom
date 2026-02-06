@@ -1,0 +1,292 @@
+{
+  "file": "data/plinko_medium_30_1770339183094.json",
+  "server_seed_revealed": "59436d5114d239bc388947e9dcbe9546532bf9b8b1bd96669550ca124330d244",
+  "server_seed_hash": "68f05ff8f0033b6e9939dfb3180db640f1650c2dd9fac3cecd2d797b9e63116b",
+  "client_seed": "bc0077399f741f4e44c0d257820c0b55aa64f5836ab69f598c876f14205eee2e",
+  "commitment_valid": true,
+  "total_bets": 30,
+  "verified": 30,
+  "passed": 30,
+  "failed": 0,
+  "skipped": 0,
+  "pass_rate": "100.0%",
+  "nonce_range": {
+    "min": 1,
+    "max": 30
+  },
+  "nonce_gaps": [],
+  "failures": [],
+  "details": [
+    {
+      "nonce": 1,
+      "computed_bucket": 7,
+      "computed_mult": 0.5,
+      "expected_bucket": 7,
+      "expected_mult": 0.5,
+      "float": 0.3696350634563714,
+      "ok": true
+    },
+    {
+      "nonce": 2,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8293127969373018,
+      "ok": true
+    },
+    {
+      "nonce": 3,
+      "computed_bucket": 8,
+      "computed_mult": 0.3,
+      "expected_bucket": 8,
+      "expected_mult": 0.3,
+      "float": 0.4047597649041563,
+      "ok": true
+    },
+    {
+      "nonce": 4,
+      "computed_bucket": 6,
+      "computed_mult": 1,
+      "expected_bucket": 6,
+      "expected_mult": 1,
+      "float": 0.16483328957110643,
+      "ok": true
+    },
+    {
+      "nonce": 5,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8557534688152373,
+      "ok": true
+    },
+    {
+      "nonce": 6,
+      "computed_bucket": 9,
+      "computed_mult": 0.5,
+      "expected_bucket": 9,
+      "expected_mult": 0.5,
+      "float": 0.7101989777293056,
+      "ok": true
+    },
+    {
+      "nonce": 7,
+      "computed_bucket": 11,
+      "computed_mult": 1.5,
+      "expected_bucket": 11,
+      "expected_mult": 1.5,
+      "float": 0.9310530694201589,
+      "ok": true
+    },
+    {
+      "nonce": 8,
+      "computed_bucket": 11,
+      "computed_mult": 1.5,
+      "expected_bucket": 11,
+      "expected_mult": 1.5,
+      "float": 0.9419801346957684,
+      "ok": true
+    },
+    {
+      "nonce": 9,
+      "computed_bucket": 9,
+      "computed_mult": 0.5,
+      "expected_bucket": 9,
+      "expected_mult": 0.5,
+      "float": 0.6850814144127071,
+      "ok": true
+    },
+    {
+      "nonce": 10,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8136211689561605,
+      "ok": true
+    },
+    {
+      "nonce": 11,
+      "computed_bucket": 7,
+      "computed_mult": 0.5,
+      "expected_bucket": 7,
+      "expected_mult": 0.5,
+      "float": 0.34962655743584037,
+      "ok": true
+    },
+    {
+      "nonce": 12,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.7978202160447836,
+      "ok": true
+    },
+    {
+      "nonce": 13,
+      "computed_bucket": 8,
+      "computed_mult": 0.3,
+      "expected_bucket": 8,
+      "expected_mult": 0.3,
+      "float": 0.5428348660934716,
+      "ok": true
+    },
+    {
+      "nonce": 14,
+      "computed_bucket": 6,
+      "computed_mult": 1,
+      "expected_bucket": 6,
+      "expected_mult": 1,
+      "float": 0.2055580026935786,
+      "ok": true
+    },
+    {
+      "nonce": 15,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8568299117032439,
+      "ok": true
+    },
+    {
+      "nonce": 16,
+      "computed_bucket": 9,
+      "computed_mult": 0.5,
+      "expected_bucket": 9,
+      "expected_mult": 0.5,
+      "float": 0.6316167532932013,
+      "ok": true
+    },
+    {
+      "nonce": 17,
+      "computed_bucket": 11,
+      "computed_mult": 1.5,
+      "expected_bucket": 11,
+      "expected_mult": 1.5,
+      "float": 0.939581964397803,
+      "ok": true
+    },
+    {
+      "nonce": 18,
+      "computed_bucket": 6,
+      "computed_mult": 1,
+      "expected_bucket": 6,
+      "expected_mult": 1,
+      "float": 0.1158289851155132,
+      "ok": true
+    },
+    {
+      "nonce": 19,
+      "computed_bucket": 7,
+      "computed_mult": 0.5,
+      "expected_bucket": 7,
+      "expected_mult": 0.5,
+      "float": 0.23355972860008478,
+      "ok": true
+    },
+    {
+      "nonce": 20,
+      "computed_bucket": 6,
+      "computed_mult": 1,
+      "expected_bucket": 6,
+      "expected_mult": 1,
+      "float": 0.15974803315475583,
+      "ok": true
+    },
+    {
+      "nonce": 21,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8710540789179504,
+      "ok": true
+    },
+    {
+      "nonce": 22,
+      "computed_bucket": 9,
+      "computed_mult": 0.5,
+      "expected_bucket": 9,
+      "expected_mult": 0.5,
+      "float": 0.7029707019682974,
+      "ok": true
+    },
+    {
+      "nonce": 23,
+      "computed_bucket": 9,
+      "computed_mult": 0.5,
+      "expected_bucket": 9,
+      "expected_mult": 0.5,
+      "float": 0.7596236418467015,
+      "ok": true
+    },
+    {
+      "nonce": 24,
+      "computed_bucket": 6,
+      "computed_mult": 1,
+      "expected_bucket": 6,
+      "expected_mult": 1,
+      "float": 0.1279227624181658,
+      "ok": true
+    },
+    {
+      "nonce": 25,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8804099154658616,
+      "ok": true
+    },
+    {
+      "nonce": 26,
+      "computed_bucket": 7,
+      "computed_mult": 0.5,
+      "expected_bucket": 7,
+      "expected_mult": 0.5,
+      "float": 0.38125682179816067,
+      "ok": true
+    },
+    {
+      "nonce": 27,
+      "computed_bucket": 5,
+      "computed_mult": 1.5,
+      "expected_bucket": 5,
+      "expected_mult": 1.5,
+      "float": 0.06767195300199091,
+      "ok": true
+    },
+    {
+      "nonce": 28,
+      "computed_bucket": 9,
+      "computed_mult": 0.5,
+      "expected_bucket": 9,
+      "expected_mult": 0.5,
+      "float": 0.6671466680709273,
+      "ok": true
+    },
+    {
+      "nonce": 29,
+      "computed_bucket": 7,
+      "computed_mult": 0.5,
+      "expected_bucket": 7,
+      "expected_mult": 0.5,
+      "float": 0.27743902732618153,
+      "ok": true
+    },
+    {
+      "nonce": 30,
+      "computed_bucket": 10,
+      "computed_mult": 1,
+      "expected_bucket": 10,
+      "expected_mult": 1,
+      "float": 0.8611673396080732,
+      "ok": true
+    }
+  ],
+  "ts": "2026-02-06T02:12:54.955Z"
+}

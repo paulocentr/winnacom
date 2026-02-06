@@ -1,5 +1,5 @@
-// analisa os samples coletados
-// uso: node analyze-samples.js <samples.json> [difficulty]
+// analyze collected samples
+// usage: node analyze-samples.js <samples.json> [difficulty]
 
 import fs from 'fs';
 

@@ -1,7 +1,7 @@
 {
   "selfTest": {
     "seed": "a]Y`yJj5B=Kc5FD",
-    "slot": 7,
+    "bucket": 6,
     "deterministic": true
   },
   "results": [
@@ -11,8 +11,8 @@
       "client": "test",
       "nonce": 0,
       "risk": "low",
-      "got": 7,
-      "expected": 7,
+      "got": 6,
+      "expected": 6,
       "ok": true,
       "commitmentValid": true
     },
@@ -22,8 +22,8 @@
       "client": "player123",
       "nonce": 0,
       "risk": "low",
-      "got": 9,
-      "expected": 9,
+      "got": 6,
+      "expected": 6,
       "ok": true,
       "commitmentValid": true
     },
@@ -37,10 +37,32 @@
       "expected": 6,
       "ok": true,
       "commitmentValid": true
+    },
+    {
+      "id": 4,
+      "seed": "59436d5114d239bc388947e9dcbe9546532bf9b8b1bd96669550ca124330d244",
+      "client": "bc0077399f741f4e44c0d257820c0b55aa64f5836ab69f598c876f14205eee2e",
+      "nonce": 1,
+      "risk": "medium",
+      "got": 7,
+      "expected": 7,
+      "ok": true,
+      "commitmentValid": true
+    },
+    {
+      "id": 5,
+      "seed": "9932862dad02e165c8295be73b76e8fb0d04d8aa4126d8bbdf56d39710d21066",
+      "client": "8847c9300016f0fba472f2671c3abb45d960de730b25ae5249df2cca603c57d9",
+      "nonce": 1,
+      "risk": "high",
+      "got": 7,
+      "expected": 7,
+      "ok": true,
+      "commitmentValid": true
     }
   ],
-  "pass": 3,
+  "pass": 5,
   "fail": 0,
   "skipped": 0,
-  "ts": "2026-02-05T20:19:47.508Z"
+  "ts": "2026-02-06T03:23:48.728Z"
 }

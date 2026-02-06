@@ -2,7 +2,10 @@
 
 provably fair audit for winna.com plinko
 
-full report -> **[AUDIT_SUMMARY.md](AUDIT_SUMMARY.md)**
+## reports
+
+- **[AUDIT_SUMMARY.md](AUDIT_SUMMARY.md)** - statistical audit (RTP, distribution, security)
+- **[report/CRYPTO_REPORT.md](report/CRYPTO_REPORT.md)** - cryptographic verification (bet-by-bet proof with real seeds)
 
 ## setup
 
@@ -19,7 +22,19 @@ npm run crypto        # crypto checks
 npm run nonce         # nonce edge cases
 npm run timing        # timing analysis
 npm run analyze <file> # analyze sample data
+npm run verify-bets <export.json> <revealed_server_seed>  # cryptographic bet verification
 ```
+
+## cryptographic verification workflow
+
+1. note your current seed pair (client seed, hashed server seed, nonce)
+2. play bets with the chrome extension capturing API responses
+3. export from extension popup
+4. rotate seeds on winna ("Change Pair and Unhash Server seed")
+5. copy the revealed (unhashed) server seed
+6. run `npm run verify-bets -- data/export.json <revealed_seed>`
+
+this verifies: commitment (SHA-256 hash match), every bet outcome, nonce sequence
 
 ## data collection
 

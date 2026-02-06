@@ -1,0 +1,73 @@
+{
+  "_note": "seed pairs recorded during the audit - each round is one rotation",
+  "rounds": [
+    {
+      "round": 1,
+      "client_seed": "fddbb729d14e56a1e401ab25b9d030a56d9c91dcf487efa2b74c97c0c425003f",
+      "server_seed_hashed": "653965ec7984edb3a092d2cf858e69502b7f992f08d42c9b129c92ad95816972",
+      "server_seed_revealed": "5cecf5e69f10c072cc3753688f8c32a772afee990bce5095d2a5107839518958",
+      "nonce_start": 1,
+      "nonce_end": 100,
+      "bets": 100,
+      "difficulty": "low",
+      "commitment_valid": true,
+      "bet_verification": "100/100 (100%)",
+      "extension_version": "1.4",
+      "note": "first round - autobet, extension v1.4 didnt capture per-bet nonces. verified retroactively after adding low prob table to verifier - nonces 1-100 sequential, all match."
+    },
+    {
+      "round": 2,
+      "client_seed": "bc0077399f741f4e44c0d257820c0b55aa64f5836ab69f598c876f14205eee2e",
+      "server_seed_hashed": "68f05ff8f0033b6e9939dfb3180db640f1650c2dd9fac3cecd2d797b9e63116b",
+      "server_seed_revealed": "59436d5114d239bc388947e9dcbe9546532bf9b8b1bd96669550ca124330d244",
+      "nonce_start": 1,
+      "nonce_end": 30,
+      "bets": 30,
+      "difficulty": "medium",
+      "commitment_valid": true,
+      "bet_verification": "30/30 (100%)",
+      "nonces_confirmed": "via winna history tab - nonces 1-30 sequential",
+      "note": "full verification complete. algorithm confirmed: HMAC-SHA256 byte generator with cumulative probability distribution. nonces start at 1."
+    },
+    {
+      "round": 3,
+      "client_seed": "8847c9300016f0fba472f2671c3abb45d960de730b25ae5249df2cca603c57d9",
+      "server_seed_hashed": "0a007244626efb8b0f929f42aea411537df15b44281be88bb7caa4ae78911631",
+      "server_seed_revealed": "9932862dad02e165c8295be73b76e8fb0d04d8aa4126d8bbdf56d39710d21066",
+      "nonce_start": 1,
+      "nonce_end": 60,
+      "bets": 60,
+      "difficulty": "high",
+      "pins": 16,
+      "commitment_valid": true,
+      "bet_verification": "60/60 (100%)",
+      "note": "second full verification. different difficulty (high) from round 2 (medium). played manually to keep nonce order. confirms algorithm works across difficulties."
+    },
+    {
+      "round": 4,
+      "client_seed": "52a03df6c08224825098719e58b06cbe52145d08161be2dc2b7aa1c6c59b8d39",
+      "server_seed_hashed": "bf1f57702cbe7922bfa04bab047e2485bed6351d4412327f0d816fd23c4b8f27",
+      "server_seed_revealed": null,
+      "note": "active pair, not yet rotated"
+    }
+  ],
+  "algorithm": {
+    "type": "HMAC-SHA256 byte generator + cumulative probability distribution",
+    "source": "XwnR1nwE.chunk.js from winna.com frontend",
+    "library": "js-sha256 v0.10.1",
+    "byte_generator": "HMAC-SHA256(serverSeed, clientSeed:nonce:cursor) - yields 32 bytes per hash, cursor increments",
+    "float_generation": "4 bytes -> b0/256 + b1/65536 + b2/16777216 + b3/4294967296",
+    "outcome_determination": "single float mapped against cumulative probability distribution table (NOT individual pin decisions)",
+    "note": "this is NOT the common L/R per-pin approach. winna uses weighted probability distribution per bucket."
+  },
+  "findings": {
+    "client_seed_not_user_choosable": true,
+    "api_does_not_return_nonces": true,
+    "nonces_visible_in_history_tab": true,
+    "nonces_start_at_1": true,
+    "house_edge_in_display": true,
+    "house_edge_note": "displayed multipliers have house edge applied (0.49x instead of 0.5x, 0.99x instead of 1x)",
+    "zero_bets_dont_increment_nonce": true,
+    "zero_bets_note": "$0 bets (even with logged in account) do not increment the nonce. server-side nonce tracking ignores zero-amount plays."
+  }
+}

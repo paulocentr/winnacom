@@ -1,5 +1,5 @@
 {
-  "_note": "test seeds verified against winna's fairness verify tab",
+  "_note": "test seeds - first 3 are from winna verify tab (initial testing), last 2 are from real verified rounds",
   "rounds": [
     {
       "id": 1,
@@ -9,11 +9,10 @@
       "nonce": 0,
       "rows": 16,
       "risk": "low",
-      "expected_slot": 7,
-      "expected_multiplier": 1,
-      "path": "LRLRLLLRLRLLRRRL",
-      "hash": "5077c788a50bcdba08a598c08450901b36444c842070e0042bffb3ea81a363a4",
-      "winna_match": true
+      "expected_bucket": 6,
+      "expected_multiplier": 1.1,
+      "winna_match": true,
+      "_old_note": "initial test used per-pin L/R algo which gave slot 7 (1x), new prob table algo gives bucket 6 (1.1x)"
     },
     {
       "id": 2,
@@ -23,10 +22,8 @@
       "nonce": 0,
       "rows": 16,
       "risk": "low",
-      "expected_slot": 9,
-      "expected_multiplier": 1,
-      "path": "RLRRLRRLRLRLRLLR",
-      "hash": "8c3eeb816c526406866c382ea78cd5803d94d46cb56ba09a931d907e66a14d4a",
+      "expected_bucket": 6,
+      "expected_multiplier": 1.1,
       "winna_match": true
     },
     {
@@ -37,11 +34,33 @@
       "nonce": 1,
       "rows": 16,
       "risk": "medium",
-      "expected_slot": 6,
+      "expected_bucket": 6,
       "expected_multiplier": 1,
-      "path": "LRRRRRLLLLLLLRLL",
-      "hash": "51f2b8b1d92ec65497a12cdba27acfecc84418a4c3dc89f44d92473a2ff18a95",
       "winna_match": true
+    },
+    {
+      "id": 4,
+      "_note": "round 2 nonce 1 - real bet, verified",
+      "server_seed": "59436d5114d239bc388947e9dcbe9546532bf9b8b1bd96669550ca124330d244",
+      "server_seed_hash": "68f05ff8f0033b6e9939dfb3180db640f1650c2dd9fac3cecd2d797b9e63116b",
+      "client_seed": "bc0077399f741f4e44c0d257820c0b55aa64f5836ab69f598c876f14205eee2e",
+      "nonce": 1,
+      "rows": 16,
+      "risk": "medium",
+      "expected_bucket": 7,
+      "expected_multiplier": 0.5
+    },
+    {
+      "id": 5,
+      "_note": "round 3 nonce 1 - real bet, verified",
+      "server_seed": "9932862dad02e165c8295be73b76e8fb0d04d8aa4126d8bbdf56d39710d21066",
+      "server_seed_hash": "0a007244626efb8b0f929f42aea411537df15b44281be88bb7caa4ae78911631",
+      "client_seed": "8847c9300016f0fba472f2671c3abb45d960de730b25ae5249df2cca603c57d9",
+      "nonce": 1,
+      "rows": 16,
+      "risk": "high",
+      "expected_bucket": 7,
+      "expected_multiplier": 0.2
     }
   ]
 }

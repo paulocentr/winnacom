@@ -1,86 +1,204 @@
 import crypto from 'crypto';
 
-// plinko verifier - reconstroi o algoritmo do winna
-// HMAC-SHA256(serverSeed, clientSeed:nonce), 4 bytes por row -> float -> L/R
+// plinko verifier - winna's actual algorithm
+// reverse-engineered from XwnR1nwE.chunk.js
+//
+// does NOT use per-pin L/R decisions
+// single float from byte generator mapped to cumulative probability table
+// byte generator: HMAC-SHA256(serverSeed, clientSeed:nonce:cursor) via js-sha256
 
-function generateHash(serverSeed, clientSeed, nonce) {
-    return crypto.createHmac('sha256', serverSeed)
-        .update(`${clientSeed}:${nonce}`)
-        .digest('hex');
-}
-
-function getFloat(hash, idx) {
-    const start = idx * 8;
-    if (start + 8 > hash.length) {
-        // need more bytes, rehash
-        const ext = crypto.createHash('sha256').update(hash + idx).digest('hex');
-        return parseInt(ext.slice(0, 8), 16) / 0x100000000;
+// Stake-style byte generator - yields 32 bytes per hash, increments cursor
+function* byteGenerator(serverSeed, clientSeed, nonce) {
+    let cursor = 0;
+    for (;;) {
+        const hmac = crypto.createHmac('sha256', serverSeed);
+        hmac.update(`${clientSeed}:${nonce}:${cursor++}`);
+        const buf = hmac.digest();
+        for (let i = 0; i < 32; i++) yield buf[i];
     }
-    return parseInt(hash.slice(start, start + 8), 16) / 0x100000000;
 }
 
-function getPath(hash, rows) {
-    const path = [];
-    for (let i = 0; i < rows; i++) {
-        path.push(getFloat(hash, i) < 0.5 ? 'L' : 'R');
+// generate N floats, 4 bytes each (0 to ~1)
+function getFloats(serverSeed, clientSeed, nonce, count = 1) {
+    const gen = byteGenerator(serverSeed, clientSeed, nonce);
+    const floats = [];
+    for (let f = 0; f < count; f++) {
+        const bytes = [];
+        for (let i = 0; i < 4; i++) bytes.push(gen.next().value);
+        floats.push(bytes.reduce((acc, b, i) => acc + b / Math.pow(256, i + 1), 0));
     }
-    return path;
+    return floats;
 }
 
-function pathToSlot(path) {
-    return path.filter(d => d === 'R').length;
+// probability tables - extracted from winna source (XwnR1nwE.chunk.js)
+// Wi[difficulty][pins] for low/medium/high
+// extreme uses formula Y(m1, m2, numBuckets) with zi=0.98
+const PROB_TABLES = {
+    low: {
+        8: [0.0019762983, 0.03125, 0.109375, 0.21875, 0.2753674517, 0.21875, 0.109375, 0.03125, 0.00390625],
+        9: [0.0000096794, 0.017578125, 0.0703125, 0.1640625, 0.2481024752, 0.24609375, 0.1640625, 0.0703125, 0.017578125, 0.0018878454],
+        10: [0.0000096058, 0.009765625, 0.0439453125, 0.1171875, 0.205078125, 0.2472887575, 0.205078125, 0.1171875, 0.0439453125, 0.009765625, 0.0007485117],
+        11: [0.0000097792, 0.0042108638, 0.0268554687, 0.0805664063, 0.1611328125, 0.2277032498, 0.2255859375, 0.1611328125, 0.0805664063, 0.0268554687, 0.0053710938, 0.000009701],
+        12: [0.0000095805, 0.0007943749, 0.0161132813, 0.0537109375, 0.1208496094, 0.193359375, 0.2281902653, 0.193359375, 0.1208496094, 0.0537109375, 0.0161132813, 0.0029296875, 0.0000096856],
+        13: [0.000009887, 0.0000096514, 0.0095214844, 0.0349121094, 0.0872802734, 0.1571044922, 0.2122209395, 0.2094726562, 0.1571044922, 0.0872802734, 0.0349121094, 0.0095214844, 0.00064026, 0.000009887],
+        14: [0.0000096301, 0.0000098232, 0.0031181839, 0.0222167969, 0.0610961914, 0.1221923828, 0.1832885742, 0.2137007598, 0.1832885742, 0.1221923828, 0.0610961914, 0.0222167969, 0.0055541992, 0.0000098831, 0.0000096301],
+        15: [0.0000098735, 0.0000098868, 0.0019530623, 0.013885498, 0.0416564941, 0.0916442871, 0.1527404785, 0.1985689644, 0.1963806152, 0.1527404785, 0.0916442871, 0.0416564941, 0.013885498, 0.0032043457, 0.000009863, 0.0000098735],
+        16: [0.0000096168, 0.000009747, 0.0000095379, 0.0081408415, 0.0277709961, 0.0666503906, 0.1221923828, 0.1745605469, 0.2009074574, 0.1745605469, 0.1221923828, 0.0666503906, 0.0277709961, 0.0085449219, 0.0000097213, 0.0000099066, 0.0000096168],
+    },
+    medium: {
+        8: [0.0031870833, 0.03125, 0.109375, 0.21875, 0.2741566667, 0.21875, 0.109375, 0.03125, 0.00390625],
+        9: [0.0013013963, 0.017578125, 0.0703125, 0.1640625, 0.2467454787, 0.24609375, 0.1640625, 0.0703125, 0.017578125, 0.001953125],
+        10: [0.0005570486, 0.009765625, 0.0439453125, 0.1171875, 0.205078125, 0.2465132639, 0.205078125, 0.1171875, 0.0439453125, 0.009765625, 0.0009765625],
+        11: [0.0000528183, 0.0053710938, 0.0268554687, 0.0805664063, 0.1611328125, 0.2260214005, 0.2255859375, 0.1611328125, 0.0805664063, 0.0268554687, 0.0053710938, 0.0004882813],
+        12: [0.0000098832, 0.0029296875, 0.0161132813, 0.0537109375, 0.1208496094, 0.193359375, 0.2258884324, 0.193359375, 0.1208496094, 0.0537109375, 0.0161132813, 0.0029296875, 0.0001759032],
+        13: [0.0000099176, 0.0015561401, 0.0095214844, 0.0349121094, 0.0872802734, 0.1571044922, 0.209727671, 0.2094726562, 0.1571044922, 0.0872802734, 0.0349121094, 0.0095214844, 0.0015869141, 0.0000099822],
+        14: [0.0000097504, 0.0005829438, 0.0055541992, 0.0222167969, 0.0610961914, 0.1221923828, 0.1832885742, 0.2098466526, 0.1832885742, 0.1221923828, 0.0610961914, 0.0222167969, 0.0055541992, 0.0008544922, 0.000009872],
+        15: [0.0000098344, 0.0000985555, 0.0032043457, 0.013885498, 0.0416564941, 0.0916442871, 0.1527404785, 0.1967811592, 0.1963806152, 0.1527404785, 0.0916442871, 0.0416564941, 0.013885498, 0.0032043457, 0.0004577637, 0.000009865],
+        16: [0.0000099993, 0.0000299303, 0.0018310547, 0.0085449219, 0.0277709961, 0.0666503906, 0.1221923828, 0.1745605469, 0.1966054369, 0.1745605469, 0.1221923828, 0.0666503906, 0.0277709961, 0.0085449219, 0.0018310547, 0.0002441406, 0.0000099069],
+    },
+    high: {
+        8: [0.003537361, 0.03125, 0.109375, 0.21875, 0.273806389, 0.21875, 0.109375, 0.03125, 0.00390625],
+        9: [0.0017049006, 0.017578125, 0.0703125, 0.1640625, 0.2463419744, 0.24609375, 0.1640625, 0.0703125, 0.017578125, 0.001953125],
+        10: [0.0008364042, 0.009765625, 0.0439453125, 0.1171875, 0.205078125, 0.2462339083, 0.205078125, 0.1171875, 0.0439453125, 0.009765625, 0.0009765625],
+        11: [0.0003914485, 0.0053710938, 0.0268554687, 0.0805664063, 0.1611328125, 0.2256827703, 0.2255859375, 0.1611328125, 0.0805664063, 0.0268554687, 0.0053710938, 0.0004882813],
+        12: [0.0001784097, 0.0029296875, 0.0161132813, 0.0537109375, 0.1208496094, 0.1934251059, 0.2255859375, 0.193359375, 0.1208496094, 0.0537109375, 0.0161132813, 0.0029296875, 0.0002441406],
+        13: [0.0000802376, 0.0015869141, 0.0095214844, 0.0349121094, 0.0872802734, 0.1571463249, 0.2094726563, 0.2094726563, 0.1571044922, 0.0872802734, 0.0349121094, 0.0095214844, 0.0015869141, 0.0001220703],
+        14: [0.0000377343, 0.0008544922, 0.0055541992, 0.0222167969, 0.0610961914, 0.1221923828, 0.1833118751, 0.2094726562, 0.1832885742, 0.1221923828, 0.0610961914, 0.0222167969, 0.0055541992, 0.0008544922, 0.0000610352],
+        15: [0.0000139576, 0.0004577637, 0.0032043457, 0.013885498, 0.0416564941, 0.0916442871, 0.1527570385, 0.1963806152, 0.1963806152, 0.1527404785, 0.0916442871, 0.0416564941, 0.013885498, 0.0032043457, 0.0004577637, 0.0000305176],
+        16: [0.0000099831, 0.0002441406, 0.0018310547, 0.0085449219, 0.0277709961, 0.0666503906, 0.1222021482, 0.1745605469, 0.1963806152, 0.1745605469, 0.1221923828, 0.0666503906, 0.0277709961, 0.0085449219, 0.0018310547, 0.0002441406, 0.0000107691],
+    },
+    extreme: (() => {
+        // extreme uses dynamic formula: Y(m1, m2, numBuckets) with zi=0.98
+        const zi = 0.98;
+        const params = {
+            8:  { m1: 0.00707071, m2: 0.04949495 },
+            9:  { m1: 0.00549944, m2: 0.03093427 },
+            10: { m1: 0.00309492, m2: 0.02062814 },
+            11: { m1: 0.00198,    m2: 0.01375253 },
+            12: { m1: 0.001375,   m2: 0.00825253 },
+            13: { m1: 0.000825,   m2: 0.00618687 },
+            14: { m1: 0.00049495, m2: 0.00412626 },
+            15: { m1: 0.00033,    m2: 0.00291161 },
+            16: { m1: 0.00012374, m2: 0.00247475 },
+        };
+        const result = {};
+        for (const [pins, { m1, m2 }] of Object.entries(params)) {
+            const n = zi / 0.99;
+            const edge = m1 * n, second = m2 * n;
+            const numBuckets = Number(pins) + 1;
+            const rest = 1 - (edge * 2 + second * 2);
+            const mid = (numBuckets - 4) > 0 ? rest / (numBuckets - 4) : 0;
+            const arr = Array.from({ length: numBuckets }, () => mid);
+            arr[0] = edge; arr[1] = second;
+            arr[numBuckets - 2] = second; arr[numBuckets - 1] = edge;
+            result[pins] = arr;
+        }
+        return result;
+    })(),
+};
+
+// payout tables - multipliers per bucket
+const PAYOUTS = {
+    8: {
+        low: [5.6, 2.1, 1.1, 1, 0.5, 1, 1.1, 2.1, 5.6],
+        medium: [13, 3, 1.3, 0.7, 0.4, 0.7, 1.3, 3, 13],
+        high: [29, 4, 1.5, 0.3, 0.2, 0.3, 1.5, 4, 29],
+        extreme: [35, 5, 0, 0, 0, 0, 0, 5, 35],
+    },
+    9: {
+        low: [5.6, 2, 1.6, 1, 0.7, 0.7, 1, 1.6, 2, 5.6],
+        medium: [18, 4, 1.7, 0.9, 0.5, 0.5, 0.9, 1.7, 4, 18],
+        high: [43, 7, 2, 0.6, 0.2, 0.2, 0.6, 2, 7, 43],
+        extreme: [45, 8, 0, 0, 0, 0, 0, 0, 8, 45],
+    },
+    10: {
+        low: [8.9, 3, 1.4, 1.1, 1, 0.5, 1, 1.1, 1.4, 3, 8.9],
+        medium: [22, 5, 2, 1.4, 0.6, 0.4, 0.6, 1.4, 2, 5, 22],
+        high: [76, 10, 3, 0.9, 0.3, 0.2, 0.3, 0.9, 3, 10, 76],
+        extreme: [80, 12, 0, 0, 0, 0, 0, 0, 0, 12, 80],
+    },
+    11: {
+        low: [8.4, 3, 1.9, 1.3, 1, 0.7, 0.7, 1, 1.3, 1.9, 3, 8.4],
+        medium: [24, 6, 3, 1.8, 0.7, 0.5, 0.5, 0.7, 1.8, 3, 6, 24],
+        high: [120, 14, 5.2, 1.4, 0.4, 0.2, 0.2, 0.4, 1.4, 5.2, 14, 120],
+        extreme: [125, 18, 0, 0, 0, 0, 0, 0, 0, 0, 18, 125],
+    },
+    12: {
+        low: [10, 3, 1.6, 1.4, 1.1, 1, 0.5, 1, 1.1, 1.4, 1.6, 3, 10],
+        medium: [33, 11, 4, 2, 1.1, 0.6, 0.3, 0.6, 1.1, 2, 4, 11, 33],
+        high: [170, 24, 8.1, 2, 0.7, 0.2, 0.2, 0.2, 0.7, 2, 8.1, 24, 170],
+        extreme: [180, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30, 180],
+    },
+    13: {
+        low: [8.4, 3, 1.9, 1.3, 1, 0.7, 0.7, 0.7, 0.7, 1, 1.3, 1.9, 3, 8.4],
+        medium: [43, 13, 6, 3, 1.3, 0.7, 0.4, 0.4, 0.7, 1.3, 3, 6, 13, 43],
+        high: [260, 37, 11, 4, 1, 0.2, 0.2, 0.2, 0.2, 1, 4, 11, 37, 260],
+        extreme: [300, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 40, 300],
+    },
+    14: {
+        low: [7.1, 4, 1.9, 1.4, 1.3, 1.1, 1, 0.5, 1, 1.1, 1.3, 1.4, 1.9, 4, 7.1],
+        medium: [58, 15, 7, 4, 1.9, 1, 0.5, 0.2, 0.5, 1, 1.9, 4, 7, 15, 58],
+        high: [420, 56, 18, 5, 1.9, 0.3, 0.2, 0.2, 0.2, 0.3, 1.9, 5, 18, 56, 420],
+        extreme: [500, 60, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 500],
+    },
+    15: {
+        low: [15, 8, 3, 2, 1.5, 1.1, 1, 0.7, 0.7, 1, 1.1, 1.5, 2, 3, 8, 15],
+        medium: [88, 18, 11, 5, 3, 1.3, 0.5, 0.3, 0.3, 0.5, 1.3, 3, 5, 11, 18, 88],
+        high: [620, 83, 27, 8, 3, 0.5, 0.2, 0.2, 0.2, 0.2, 0.5, 3, 8, 27, 83, 620],
+        extreme: [750, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85, 750],
+    },
+    16: {
+        low: [16, 9, 2, 1.4, 1.4, 1.2, 1.1, 1, 0.5, 1, 1.1, 1.2, 1.4, 1.4, 2, 9, 16],
+        medium: [110, 41, 10, 5, 3, 1.5, 1, 0.5, 0.3, 0.5, 1, 1.5, 3, 5, 10, 41, 110],
+        high: [1000, 130, 26, 9, 4, 2, 0.2, 0.2, 0.2, 0.2, 0.2, 2, 4, 9, 26, 130, 1000],
+        extreme: [2000, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 2000],
+    },
+};
+
+// determine bucket via cumulative probability
+function getBucket(serverSeed, clientSeed, nonce, pins = 16, difficulty = 'medium') {
+    const [float] = getFloats(serverSeed, clientSeed, nonce, 1);
+    const probs = PROB_TABLES[difficulty]?.[pins];
+    if (!probs) {
+        return { bucket: -1, float, error: `no prob table for ${difficulty}/${pins}` };
+    }
+
+    let cumulative = 0;
+    for (let i = 0; i < probs.length; i++) {
+        cumulative += probs[i];
+        if (float < cumulative) return { bucket: i, float };
+    }
+    return { bucket: probs.length - 1, float };
 }
 
-function verify(serverSeed, clientSeed, nonce, rows = 16) {
-    const hash = generateHash(serverSeed, clientSeed, nonce);
-    const path = getPath(hash, rows);
-    return { hash, path, slot: pathToSlot(path) };
+function verify(serverSeed, clientSeed, nonce, pins = 16, difficulty = 'medium') {
+    const { bucket, float, error } = getBucket(serverSeed, clientSeed, nonce, pins, difficulty);
+    if (error) return { bucket, float, multiplier: null, error };
+    const multiplier = PAYOUTS[pins]?.[difficulty]?.[bucket] ?? null;
+    return { bucket, float, multiplier };
 }
 
 function verifyCommitment(serverSeed, hash) {
     return crypto.createHash('sha256').update(serverSeed).digest('hex') === hash;
 }
 
-// tabelas de payout - winna chama de "difficulty" (low/medium/high/extreme)
-// 16 pins conferido direto da UI, extreme tem skull (0x) nos slots do meio
-const PAYOUTS = {
-    8: {
-        low: [5.6, 2.1, 1.1, 1, 0.5, 1, 1.1, 2.1, 5.6],
-        medium: [13, 3, 1.3, 0.7, 0.4, 0.7, 1.3, 3, 13],
-        high: [29, 4, 1.5, 0.3, 0.2, 0.3, 1.5, 4, 29],
-        extreme: [29, 4, 1.5, 0.3, 0.2, 0.3, 1.5, 4, 29] // 8-pin extreme unverified
-    },
-    12: {
-        low: [10, 3, 1.6, 1.4, 1.1, 1, 0.5, 1, 1.1, 1.4, 1.6, 3, 10],
-        medium: [33, 11, 4, 2, 1.1, 0.6, 0.3, 0.6, 1.1, 2, 4, 11, 33],
-        high: [170, 24, 8.1, 2, 0.7, 0.2, 0.2, 0.2, 0.7, 2, 8.1, 24, 170],
-        extreme: [170, 24, 8.1, 2, 0.7, 0.2, 0.2, 0.2, 0.7, 2, 8.1, 24, 170] // 12-pin extreme unverified
-    },
-    16: {
-        low: [16, 9, 2, 1.4, 1.4, 1.2, 1.1, 1, 0.5, 1, 1.1, 1.2, 1.4, 1.4, 2, 9, 16],
-        medium: [110, 41, 10, 5, 3, 1.5, 1, 0.5, 0.3, 0.5, 1, 1.5, 3, 5, 10, 41, 110],
-        high: [1000, 130, 26, 9, 4, 2, 0.2, 0.2, 0.2, 0.2, 0.2, 2, 4, 9, 26, 130, 1000],
-        extreme: [2000, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 2000] // confirmed - skull slots = 0x
-    }
-};
-
-function getMultiplier(slot, rows, risk) {
-    return PAYOUTS[rows]?.[risk]?.[slot] ?? null;
+function getMultiplier(bucket, pins, difficulty) {
+    return PAYOUTS[pins]?.[difficulty]?.[bucket] ?? null;
 }
 
-// cli - rodar direto: node verifier.js <server> <client> <nonce> [rows] [risk]
-if (process.argv[1].includes('verifier.js')) {
-    const [serverSeed, clientSeed, nonce, rows, risk] = process.argv.slice(2);
+// cli
+if (process.argv[1]?.includes('verifier.js')) {
+    const [serverSeed, clientSeed, nonce, pins, difficulty] = process.argv.slice(2);
     if (!serverSeed || !clientSeed) {
-        console.log('node verifier.js <serverSeed> <clientSeed> <nonce> [rows] [risk]');
+        console.log('node verifier.js <serverSeed> <clientSeed> <nonce> [pins] [difficulty]');
         process.exit(1);
     }
-    const r = parseInt(rows) || 16;
-    const result = verify(serverSeed, clientSeed, parseInt(nonce) || 0, r);
-    console.log('Hash:', result.hash);
-    console.log('Path:', result.path.join(''));
-    console.log('Slot:', result.slot);
-    console.log('Mult:', getMultiplier(result.slot, r, risk || 'medium') + 'x');
+    const p = parseInt(pins) || 16;
+    const d = difficulty || 'medium';
+    const result = verify(serverSeed, clientSeed, parseInt(nonce) || 0, p, d);
+    console.log('Float:', result.float.toFixed(10));
+    console.log('Bucket:', result.bucket);
+    console.log('Multiplier:', result.multiplier + 'x');
 }
 
-export { generateHash, getFloat, getPath, pathToSlot, verify, verifyCommitment, getMultiplier, PAYOUTS };
+export { byteGenerator, getFloats, getBucket, verify, verifyCommitment, getMultiplier, PAYOUTS, PROB_TABLES };

@@ -1,0 +1,1651 @@
+{
+  "results": [
+    {
+      "_raw": {
+        "balance": 49.02049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663936839,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663936839,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344282364
+    },
+    {
+      "_raw": {
+        "balance": 49.01049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663936909,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663936909,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344283379
+    },
+    {
+      "_raw": {
+        "balance": 49.00049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 5,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663936974,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 5,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663936974,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344284229
+    },
+    {
+      "_raw": {
+        "balance": 48.99049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937052,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937052,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344285465
+    },
+    {
+      "_raw": {
+        "balance": 48.98249,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937104,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937104,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344286288
+    },
+    {
+      "_raw": {
+        "balance": 48.99449,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937174,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937174,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344287072
+    },
+    {
+      "_raw": {
+        "balance": 48.98649,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 5,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937214,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 5,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937214,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344287983
+    },
+    {
+      "_raw": {
+        "balance": 48.97849,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937287,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937287,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344288865
+    },
+    {
+      "_raw": {
+        "balance": 48.97049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 11,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937346,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 11,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937346,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344289771
+    },
+    {
+      "_raw": {
+        "balance": 48.98049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937404,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937404,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344290650
+    },
+    {
+      "_raw": {
+        "balance": 48.99249,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937470,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937470,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344291589
+    },
+    {
+      "_raw": {
+        "balance": 48.98249,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937523,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937523,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344292448
+    },
+    {
+      "_raw": {
+        "balance": 48.97449,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937586,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937586,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344293303
+    },
+    {
+      "_raw": {
+        "balance": 48.96649,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 5,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937695,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 5,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937695,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344295018
+    },
+    {
+      "_raw": {
+        "balance": 48.96049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937763,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937763,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344295933
+    },
+    {
+      "_raw": {
+        "balance": 48.95049,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937837,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937837,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344296988
+    },
+    {
+      "_raw": {
+        "balance": 48.96083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937899,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937899,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344297907
+    },
+    {
+      "_raw": {
+        "balance": 48.95083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 6,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663937956,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 6,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663937956,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344298842
+    },
+    {
+      "_raw": {
+        "balance": 48.94483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 3,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938018,
+        "multiplier": 9,
+        "profit": 0.09,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 3,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938018,
+      "mult": 9,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344299714
+    },
+    {
+      "_raw": {
+        "balance": 48.93683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938075,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938075,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344300626
+    },
+    {
+      "_raw": {
+        "balance": 48.92883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938130,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938130,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344301485
+    },
+    {
+      "_raw": {
+        "balance": 48.91883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 11,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938193,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 11,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938193,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344302357
+    },
+    {
+      "_raw": {
+        "balance": 49.00083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938241,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938241,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344303197
+    },
+    {
+      "_raw": {
+        "balance": 49.01283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 6,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938293,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 6,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938293,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344303989
+    },
+    {
+      "_raw": {
+        "balance": 49.00283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 11,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938356,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 11,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938356,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344304861
+    },
+    {
+      "_raw": {
+        "balance": 48.99283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938410,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938410,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344305692
+    },
+    {
+      "_raw": {
+        "balance": 48.98483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938467,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938467,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344306655
+    },
+    {
+      "_raw": {
+        "balance": 48.99883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 11,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938582,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 11,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938582,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344308338
+    },
+    {
+      "_raw": {
+        "balance": 48.98883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 12,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938629,
+        "multiplier": 4,
+        "profit": 0.04,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 12,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938629,
+      "mult": 4,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344309102
+    },
+    {
+      "_raw": {
+        "balance": 48.98083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938686,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938686,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344309906
+    },
+    {
+      "_raw": {
+        "balance": 48.99083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938750,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938750,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344310880
+    },
+    {
+      "_raw": {
+        "balance": 48.98083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938819,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938819,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344311879
+    },
+    {
+      "_raw": {
+        "balance": 49.01083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938889,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938889,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344312775
+    },
+    {
+      "_raw": {
+        "balance": 49.00483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663938947,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663938947,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344313623
+    },
+    {
+      "_raw": {
+        "balance": 48.99683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939040,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939040,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344314911
+    },
+    {
+      "_raw": {
+        "balance": 48.98883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939105,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939105,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344315750
+    },
+    {
+      "_raw": {
+        "balance": 48.98083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939157,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939157,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344316568
+    },
+    {
+      "_raw": {
+        "balance": 48.97083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939212,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939212,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344317454
+    },
+    {
+      "_raw": {
+        "balance": 48.96283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939260,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939260,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344318298
+    },
+    {
+      "_raw": {
+        "balance": 48.95683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939315,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939315,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344319135
+    },
+    {
+      "_raw": {
+        "balance": 48.94883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939369,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939369,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344320077
+    },
+    {
+      "_raw": {
+        "balance": 48.93883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939410,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939410,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344320948
+    },
+    {
+      "_raw": {
+        "balance": 48.93283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939487,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939487,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344322183
+    },
+    {
+      "_raw": {
+        "balance": 48.92483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939534,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939534,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344322983
+    },
+    {
+      "_raw": {
+        "balance": 48.91683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939583,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939583,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344323785
+    },
+    {
+      "_raw": {
+        "balance": 48.90683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 12,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939631,
+        "multiplier": 4,
+        "profit": 0.04,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 12,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939631,
+      "mult": 4,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344324661
+    },
+    {
+      "_raw": {
+        "balance": 48.90083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939682,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939682,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344325517
+    },
+    {
+      "_raw": {
+        "balance": 48.89283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 11,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939743,
+        "multiplier": 2,
+        "profit": 0.02,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 11,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939743,
+      "mult": 2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344326422
+    },
+    {
+      "_raw": {
+        "balance": 48.88283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 4,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939785,
+        "multiplier": 4,
+        "profit": 0.04,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 4,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939785,
+      "mult": 4,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344327187
+    },
+    {
+      "_raw": {
+        "balance": 48.93483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 6,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939831,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 6,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939831,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344328082
+    },
+    {
+      "_raw": {
+        "balance": 48.92483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 9,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939891,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 9,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939891,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344328988
+    },
+    {
+      "_raw": {
+        "balance": 48.91483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939946,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939946,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344329851
+    },
+    {
+      "_raw": {
+        "balance": 48.94683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 8,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663939999,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 8,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663939999,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344330770
+    },
+    {
+      "_raw": {
+        "balance": 48.94083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940051,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940051,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344331665
+    },
+    {
+      "_raw": {
+        "balance": 48.93083,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940105,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940105,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344332531
+    },
+    {
+      "_raw": {
+        "balance": 48.92283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 6,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940167,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 6,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940167,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344333481
+    },
+    {
+      "_raw": {
+        "balance": 48.91283,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940216,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940216,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344334278
+    },
+    {
+      "_raw": {
+        "balance": 48.90483,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940264,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940264,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344335126
+    },
+    {
+      "_raw": {
+        "balance": 48.89683,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 7,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940320,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 7,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940320,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344335936
+    },
+    {
+      "_raw": {
+        "balance": 48.88883,
+        "coin": "USDT",
+        "currency": "USD",
+        "data": {
+          "bucket": 10,
+          "difficulty": "high",
+          "pins": 16
+        },
+        "id": 663940362,
+        "multiplier": 0.2,
+        "profit": 0.002,
+        "status": "win",
+        "type": "quick",
+        "wager": 0.01
+      },
+      "bucket": 10,
+      "clientSeed": null,
+      "difficulty": "high",
+      "id": 663940362,
+      "mult": 0.2,
+      "nonce": null,
+      "pins": 16,
+      "serverSeedHash": null,
+      "ts": 1770344336799
+    }
+  ],
+  "summary": {
+    "count": 60,
+    "avgMult": 0.7766666666666675,
+    "rtp": 77.66666666666676,
+    "chiSq": 6.578375698375698,
+    "fair": true,
+    "buckets": [
+      0,
+      0,
+      0,
+      1,
+      1,
+      3,
+      4,
+      16,
+      11,
+      10,
+      7,
+      5,
+      2,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "exported": "2026-02-06T02:19:02.586Z"
+}

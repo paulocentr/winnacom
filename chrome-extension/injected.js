@@ -1,4 +1,5 @@
 // runs in page context - can intercept fetch
+// captures full API response including seeds
 
 (function() {
     const origFetch = window.fetch;
@@ -20,12 +21,18 @@
                         difficulty: data.data.difficulty,
                         pins: data.data.pins,
                         id: data.id,
+                        nonce: data.nonce ?? data.data?.nonce ?? null,
+                        serverSeedHash: data.serverSeedHash ?? data.server_seed_hash ?? data.data?.serverSeedHash ?? null,
+                        clientSeed: data.clientSeed ?? data.client_seed ?? data.data?.clientSeed ?? null,
+                        _raw: data,
                         ts: Date.now()
                     };
 
                     // send to content script
                     window.dispatchEvent(new CustomEvent('plinko-result', { detail: result }));
-                    console.log(`[plinko] bucket ${result.bucket}, ${result.mult}x`);
+
+                    const nonceStr = result.nonce !== null ? ` n:${result.nonce}` : '';
+                    console.log(`[plinko] bucket ${result.bucket}, ${result.mult}x${nonceStr}`);
                 }
             }
         } catch (e) {

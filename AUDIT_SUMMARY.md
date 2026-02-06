@@ -4,32 +4,35 @@ https://winna.com/game/originals/plinko
 
 ## TL;DR
 
-The game looks fair for low/medium/high (all around ~99% theoretical RTP, distribution follows binomial). Extreme mode is a completly diferent thing - all-or-nothing with ~11% RTP on 16 pins, huge house edge but thats by design. I managed to confirm our verifier matches winna's verify tab (3/3 test cases). The main problem is their provably fair API is broken - you cant actually verify your own bets which kind of defeats the purpose.
+The game is fair across all four difficulties (~98% theoretical RTP for low/medium/high/extreme). After reverse-engineering the actual algorithm from winna's frontend source code, I verified **190 out of 190 bets cryptographically** across three difficulties (low, medium and high) using a funded test account and 3 seed rotations. The algorithm is legit but has some transparency issues: players cant choose their own client seed, the API doesnt return nonces per bet, and the plinko animation is cosmetic (outcomes are determined by a probability table, not pin-by-pin physics). Extreme mode looks scary (skull icons on 13 of 17 slots) but mathematically the RTP is the same ~98% as the other modes - its just high variance.
+
+Full cryptographic verification details: **[report/CRYPTO_REPORT.md](report/CRYPTO_REPORT.md)**
 
 ## 1. How the Verifier Works
 
-Standard HMAC-SHA256 approach, same as Stake/BC.Game etc.
+**Important:** Winna does NOT use the common per-pin left/right approach like Stake. I had to reverse-engineer their actual algorithm from the frontend JavaScript source code (lazy-loaded chunk `XwnR1nwE.chunk.js`). See [report/CRYPTO_REPORT.md](report/CRYPTO_REPORT.md) for the full discovery process.
 
-**How outcomes are generated:**
-1. `hash = HMAC-SHA256(serverSeed, clientSeed:nonce)`
-2. For each row (16 by default): take 4 bytes from hash, convert to float between 0 and 1
-3. float < 0.5 = Left, otherwise Right
-4. Final slot = how many times ball went Right
-5. Slot maps to multiplier from the payout table for that difficulty
+**How outcomes are actually generated:**
+1. **Byte generator**: `HMAC-SHA256(serverSeed, clientSeed:nonce:cursor)` using js-sha256 v0.10.1. Each HMAC gives 32 bytes, cursor starts at 0 and increments when more bytes are needed
+2. **Float generation**: Take 4 bytes, convert to float: `b0/256 + b1/65536 + b2/16777216 + b3/4294967296`
+3. **Bucket determination**: The single float is compared against a cumulative probability distribution table for that difficulty/pins combination. First bucket where the cumulative sum exceeds the float wins
+4. Bucket maps to multiplier from the payout table
 
-Deterministic - same seeds + nonce = same result every time. I verified this by running the same inputs multiple times locally.
+This is NOT a pin-by-pin simulation. The ball doesnt bounce left/right per row - instead one random number directly picks the final bucket. The visual ball animation you see on screen is cosmetic, reconstructed from the result. For low/medium/high the distribution is symmetric and resembles binomial coefficients. Extreme uses a completely different distribution (nearly uniform across middle buckets, computed dynamically with a `zi = 0.98` scaling constant).
 
-**Seed commitment:** Server seed gets hashed (SHA-256) before player sees it, then revealed after rotation. Normal commit-reveal flow. Problem is winna's seed endpoint doesnt work right now (more on this later).
+Deterministic - same seeds + nonce = same result every time.
 
-**Verifier validation against Winna:** I tested our verifier against winna's builtin Verify tab with some test seeds and they match:
+**Seed commitment:** Server seed gets hashed (SHA-256) before player sees it, then revealed after rotation. Normal commit-reveal flow. Works correctly - I verified 3 seed pair commitments across 3 rotations.
 
-| # | Server Seed | Client Seed | Nonce | Risk | Our Result | Winna Result |
-|---|------------|-------------|-------|------|-----------|-------------|
-| 1 | `a]Y`yJj5B=Kc5FD` | test | 0 | Low | Slot 7, 1x | 1x - match |
-| 2 | `mysecretserverseed` | player123 | 0 | Low | Slot 9, 1x | 1x - match |
-| 3 | `mysecretserverseed` | player123 | 1 | Medium | Slot 6, 1x | 1x - match |
+**Verifier validation against real bets:** Using the provided test account, I played bets across multiple difficulties, rotated seed pairs, then verified every single bet against our independent verifier:
 
-So our verifier is correct.
+- **Round 1 (low/16)**: 100/100 bets matched (100%)
+- **Round 2 (medium/16)**: 30/30 bets matched (100%)
+- **Round 3 (high/16)**: 60/60 bets matched (100%)
+- **Total: 190/190 verified** - every bucket and multiplier was correct across 3 difficulties
+- **Commitment valid** - 3 seed pair commitments verified (SHA-256 match)
+- **Nonce sequence continuous** - no gaps or duplicates in any round
+- **Cross-checked with winna's Verify tab** - 6/6 additional matches
 
 ## 2. Payout Tables (16 Pins)
 
@@ -73,38 +76,37 @@ Chi-sq critical = 26.3 at p=0.05, df=16.
 
 Low/Medium/High all pass chi-squared comfortably. The distributions look like what you'd expect from a binomial.
 
-Extreme is weird but makes sense when you think about it. Chi-sq is 6354 which looks scary but thats because the distribution is basically flat (uniform) not bell-shaped. But thats expected! Since 13 of 17 slots pay 0x, the payout doesnt depend on the bell curve shape at all. 989 out of 1000 samples were 0x, 11 hit 100x, zero hit 2000x. The 110% RTP is just variance from those 11 lucky 100x hits - with more samples itd converge to the theoretical ~11%.
+Extreme is weird but makes sense when you think about it. Chi-sq is 6354 which looks scary but thats compared to a binomial distribution, and extreme intentionally doesnt follow binomial. The actual probability distribution extracted from winna's source is nearly uniform across the middle buckets (each around ~7.65% for 16 pins) with tiny weights on the edges. This means most bets land in 0x territory, but the rare edge hits (2000x, 100x) make up for it mathematically. The theoretical RTP is actually ~98% same as the other difficulties - just much higher variance. 989 out of 1000 samples were 0x, 11 hit 100x, zero hit 2000x. The 110% observed RTP is just variance from those lucky 100x hits.
 
 ## 4. Simulation
 
-100k simulated rounds with our verifier, medium difficulty, 16 pins:
-- RTP: 98.17%
-- Chi-sq: 16.42 (fair, well under 26.3)
-- L/R balance: 50.11% / 49.89%
+100k simulated rounds, medium difficulty, 16 pins:
+- RTP: 98.74%
+- Chi-sq: 11.02 (fair, well under 26.3)
 
-Looks good. Distribution matches the theoretical binomial.
+Looks good. Simulation now uses the actual algorithm (byte generator + cumulative probability distribution, same as winna's implementation). Distribution matches the probability table exactly.
 
 **Theoretical RTP from the payout tables:**
 
 | Difficulty | 8 pins | 12 pins | 16 pins |
 |-----------|--------|---------|---------|
-| Low | 98.98% | 98.98% | 99.00% |
-| Medium | 98.91% | 98.99% | 98.99% |
-| High | 99.06% | 99.12% | 98.98% |
-| Extreme | 99.06%* | 99.12%* | 10.99% |
+| Low | 98.00% | 98.00% | 98.00% |
+| Medium | 98.00% | 98.00% | 98.00% |
+| High | 98.00% | 98.00% | 98.00% |
+| Extreme | ~98% | ~98% | ~98% |
 
-*8/12-pin extreme payouts not verified, probably same as high. The big finding here is 16-pin extreme at only 10.99% RTP - thats an 89% house edge. The probability of hitting slots 0 or 16 is like 0.003% combined so the 2000x almost never hits. Players really need to understand what theyre getting into with extreme.
+All four difficulties are at 98% theoretical RTP. Already covered how extreme works above - tldr the `zi = 0.98` constant in their formula literally sets the return rate. Same house edge, way more variance.
 
 ## 5. Security
 
 | Test | Result | Notes |
 |------|--------|-------|
 | HMAC vs SHA256 | pass | using HMAC (good, not vuln to length extension) |
-| L/R Balance | pass | 50.11/49.89% over 50k samples |
-| Distribution | pass | chi-sq 13.25 |
+| Bucket Symmetry | pass | 50.15/49.85% over 50k samples |
+| Distribution | pass | chi-sq 22.98 |
 | Nonce Overflow | pass | no collision at 2^32 |
 | Modulo Bias | pass | float method, no bias |
-| Timing | pass | 2.1us diff edge vs mid, no leak |
+| Timing | pass | 1.0us diff edge vs mid, no leak |
 | Determinism | pass | same in = same out |
 
 **Couldnt test** (need real money/api access):
@@ -125,61 +127,72 @@ The client side tho - after running like 1000+ rounds on autobet the game gets r
 
 Accessible from the "Fairness" link in the footer. Three tabs:
 
-**Overview** - explains their algo decently. Server seed (hashed), client seed, nonce from 0 incrementing per bet, seed rotation reveals previous. Standard stuff.
+**Overview** - explains their algo, mentions server seed (hashed), client seed, nonce incrementing per bet, seed rotation reveals previous. Standard commit-reveal stuff. However their description says "16 results are generated, one for each row" which suggests a per-pin approach - but the actual code uses a single-float probability distribution. The overview description doesnt match the implementation.
 *(screenshot: `screenshots/fairness_overview.png`)*
 
-**History** - completly empty. Nothing shows up, no bet history no seed history. Maybe it needs real money deposits? idk
+**History** - shows bet history with nonces after the seed pair is rotated. Works correctly with funded accounts. I used this to confirm nonces 1-30 for my verified round. Without real money bets it shows empty.
 *(screenshot: `screenshots/fairness_history.png`)*
 
-**Verify** - has all the right fields (Game, Rows, Risk, Client Seed, Server Seed, Nonce) but useless without seed data from the system. I did test it manually with known seeds and it works - matches our verifier output perfectly (see section 1).
+**Verify** - has all the right fields (Game, Rows, Risk, Client Seed, Server Seed, Nonce). Tested with real revealed seeds and it works - matches our independent verifier output.
 *(screenshots: `screenshots/fairness_verify_empty.png`, `screenshots/fairness_verify.png`)*
 
-**The seed endpoint is broken.** Clicking "Change Pair and Unhash Server seed" calls `get-active-seed` and returns:
+**Seed rotation works with funded accounts.** The initial error I saw (HTTP 500 / "Not found any seeds") was because seeds arent generated until you make real money bets. Once you play with real funds, the seed system works correctly - you can rotate pairs and get the revealed server seed. The error handling could be better tho (should say "no bets found" instead of a 500).
 
-```json
-{
-  "success": false,
-  "status": 500,
-  "message": "Not found any seeds",
-  "title": "Api Error",
-  "code": 404
-}
-```
+### Issues Found
 
-HTTP 500 but code 404 in the body lol - inconsistent error handling. Could be because I was on $0 bets and they dont generate seeds for free play. But even so, a 500 is wrong - should say "deposit required" or something.
-*(screenshot: `screenshots/fairness_modal_error.png`)*
+1. **Client seed not user-choosable** - winna generates the client seed automatically. Players cant set their own. Standard practice (Stake, BC.Game) lets you freely change it. Since the casino controls both seeds at commitment time, a player cant be sure the pair wasnt cherry-picked. Commit-reveal still prevents changing seeds after the fact, but this weakens the provably fair guarantee.
 
-### Assumptions
-- They use HMAC-SHA256 as described (cant 100% confirm without working seeds)
-- Server seed generation is cryptographically secure
-- Nonces increment properly and cant be reused
-- Payout tables in the UI match whats actually paid out server-side
+2. **API doesnt return nonce per bet** - the `/plinko/play` response has bet id, multiplier, wager, profit, difficulty, pins, bucket - but no nonce, no seed info. The nonce is only tracked in the frontend JS counter. If you use autobet, HTTP responses can arrive out of order and nonce mapping gets lost. The History tab shows nonces retroactively after rotation, which helps, but the ideal implementation returns the nonce with each bet.
 
-### What Should Be Done Next
-- Get the seed endpoint fixed and verify actual bets end-to-end
-- More extreme mode samples (10k+) to nail down the real RTP
+3. **House edge in displayed multipliers** - the History tab shows multipliers with house edge baked in (0.49x instead of 0.5x, 0.99x instead of 1x, 1.49x instead of 1.5x). The Verify tab shows the raw multipliers (0.5x, 1x, 1.5x). This is confusing when trying to manually cross-check.
+
+4. **Probability distribution vs pin simulation** - the ball animation on screen doesnt reflect the actual random process. There are no 16 random left/right decisions - just one random number picking a bucket. The animation is reconstructed from the final result. Not wrong mathematically, but the animation makes you think theres 16 random bounces when there arent.
+
+5. **$0 bets dont increment nonce** - zero-amount bets (even with a logged-in account) do not advance the server-side nonce. This means you cant use $0 bets to test verification cheaply - only real-money bets count for the nonce sequence.
+
+### What I Confirmed
+- HMAC-SHA256 with js-sha256 v0.10.1 (server seed as string key, not hex buffer)
+- Commit-reveal works correctly (3 seed pairs verified across 3 rotations)
+- Nonces start at 1 and increment per real-money bet ($0 bets dont count)
+- 190/190 bets verified cryptographically (100 low + 30 medium + 60 high)
+- Cross-difficulty verification works (same algorithm, different probability tables)
+- All probability tables extracted for all 4 difficulties and pin counts 8-16
+- Payout tables match whats actually paid
+- All difficulties have ~98% theoretical RTP including extreme
+
+### What Could Still Be Done
 - Race condition testing with real bets
-- Look at server seed entropy once revealed seeds are available
+- Test client seed independence (would need cooperation from winna)
+- Larger statistical sample collection (5k+ per difficulty for tighter confidence)
 
 ## 8. Conclusion
 
-For low/medium/high the game is fair. The distributions match, chi-squared passes, no crypto issues found, RTP is where youd expect.
+Game is fair. Numbers check out both statistically (RTP, chi-squared, distribution) and cryptographically (190/190 bets verified across 3 difficulties and 3 seed rotations). Algorithm works, commit-reveal works, same inputs always give same outputs.
 
-Extreme is intentionally high risk - the 10.99% theoretical RTP is a massive house edge but the mode literally has skull icons on most slots so at least its transparent about it. Its basically a lottery ticket.
+All four difficulties at ~98% RTP including extreme (already explained above - its just high variance not a worse deal).
 
-The real issue is the broken fairness API. You cant call a game "provably fair" if players have no way to actually verify their bets. Winna needs to fix that seed endpoint. Right now we can only assess fairness statistically, not cryptographically.
+Transparency could be better tho:
+1. Players cant choose their own client seed - casino picks both seeds at commitment time which weakens the provably fair guarantee
+2. API doesnt return nonces per bet - makes verification harder especially with autobet where responses come back out of order
+3. $0 bets dont increment nonces so you cant verify cheaply
+4. Plinko animation is cosmetic, actual algorithm uses a probability distribution not pin physics
+5. Their own docs describe a per-pin approach that doesnt match their code
+
+Bottom line: game IS fair and outcomes ARE verifiable. Winna should let players set their own client seed tho, thats the biggest gap.
 
 ## Files
 
 | File | Description |
 |------|------------|
-| `src/verifier.js` | HMAC-SHA256 plinko verification |
-| `src/simulation.js` | RTP simulation (100k rounds) |
-| `src/test-samples.js` | Seed verification |
+| `src/verifier.js` | Plinko verifier (byte generator + probability distribution, all difficulties/pins) |
+| `src/verify-bets.js` | Batch bet verification against exported data |
+| `src/simulation.js` | RTP simulation using actual winna algorithm |
+| `src/extract-tables.js` | Probability table extraction from winna source |
 | `src/analyze-samples.js` | Sample analysis |
 | `src/exploit-tests/` | Security tests |
-| `chrome-extension/` | Data collection extension |
-| `data/` | All data and results |
+| `chrome-extension/` | Data collection extension (MV3) |
+| `data/` | Bet exports, verification results, seed pairs |
+| `report/CRYPTO_REPORT.md` | Full cryptographic verification report |
 
 ## Running it
 
